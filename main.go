@@ -18,6 +18,7 @@ func main() {
 	fmt.Println("How long you want your password?")
 	fmt.Println("-------------------")
 	length := getUserInput()
+	fmt.Printf("%s\n", fmt.Sprintf("Generate password: %d is the chosen length", *length))
 
 	password := generatePassword(length)
 	fmt.Println(password)
@@ -42,7 +43,6 @@ func getUserInput() *int {
 
 // TODO: change to crypto/rand instead of math/rand, math/rand ain't secure to use.
 func generatePassword(length *int) string {
-	fmt.Printf("%s\n", fmt.Sprintf("Generate password: %d is the chosen length", *length))
 	chars := UPPERCASE + LOWERCASE + NUMBERS + SYMBOLS
 	pw := make([]byte, *length)
 	pw[0] = UPPERCASE[rand.Intn(len(UPPERCASE))]
